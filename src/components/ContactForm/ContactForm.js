@@ -1,6 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { Label, Div, ErrorText } from './ContactForm.styled';
+import PropTypes from 'prop-types';
 
 export const initialValues = {
   name: '',
@@ -24,9 +25,9 @@ const schema = yup.object({
   number: yup.string().matches(phoneValid, 'Phone number is not valid'),
 });
 
-const ContactForm = ({ callback }) => {
+const ContactForm = ({ onSubmit }) => {
   const handleSubmit = (value, { resetForm }) => {
-    callback(value);
+    onSubmit(value);
     resetForm();
   };
 
@@ -52,6 +53,10 @@ const ContactForm = ({ callback }) => {
       </Form>
     </Formik>
   );
+};
+
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default ContactForm;

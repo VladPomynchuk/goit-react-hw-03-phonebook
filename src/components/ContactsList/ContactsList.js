@@ -8,11 +8,11 @@ const ContactsList = ({ data, handleDelete }) => {
       <List>
         {data.map(el => {
           return (
-            <Item key={el.name}>
+            <Item key={el.id}>
               {`${el.name}: ${el.number}`}
               <button
                 onClick={() => {
-                  handleDelete(el.name);
+                  handleDelete(el.id);
                 }}
               >
                 Delete
