@@ -22,7 +22,11 @@ const phoneValid =
 
 const schema = yup.object({
   name: yup.string().required(),
-  number: yup.string().matches(phoneValid, 'Phone number is not valid'),
+  number: yup
+    .string()
+    .min(3)
+    .required()
+    .matches(phoneValid, 'Phone number is not valid'),
 });
 
 const ContactForm = ({ onSubmit }) => {
